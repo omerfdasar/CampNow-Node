@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./icon.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GuessingNumber</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="top">
+        <h2>Welcome to Guessing Game</h2>
+        <p id="explanation">
+          In this game, you will guess the number <span class="red">X</span>
+        </p>
+        <p id="remaining">
+          You have <span id="chances">7</span> remaining chance
+        </p>
+      </div>
+      <div class="main">
+        <input
+          type="text"
+          name=""
+          id="input"
+          placeholder="enter your guess"
+        /><br />
+        <button type="button" id="button">Guess</button>
+      </div>
+
+      <div id="resultDisplay"><p id="result"></p></div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
