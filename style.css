@@ -6,7 +6,7 @@ body {
   flex-direction: column;
 }
 .main {
-  margin: 50px auto;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +33,7 @@ body {
 #top {
   align-self: center;
   justify-self: center;
-  margin-top: 130px;
+  margin-top: 30px;
 }
 h2 {
   text-align: center;
@@ -60,6 +60,7 @@ input {
   width: 30%;
   min-width: 380px;
   margin: 5px auto;
+  border: 2px groove firebrick;
 }
 :placeholder-shown {
   text-align: center;

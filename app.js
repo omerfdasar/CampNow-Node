@@ -12,24 +12,33 @@ function sorting(x) {
     return a - b;
   });
 }
-
+let smallNums = [0];
+let bigNums = [100];
 button.addEventListener("click", () => {
   let inputValue = inputbox.value;
-  let smallNums = [];
-  let bigNums = [];
+
   if (inputValue > theNumber) {
     times--;
-    bigNums.push(inputValue);
+    bigNums.push(+inputValue);
     sorting(bigNums);
-    display.innerText += `${order}) You Entered ${inputValue} => Enter a number between ${inputValue} and 0`;
+    display.innerText += `${order}) You Entered ${inputValue} => Enter a number between ${+smallNums[
+      smallNums.length - 1
+    ]} and ${+bigNums[0]}`;
+    console.log(smallNums, bigNums);
+    console.log(smallNums[smallNums.length - 1], bigNums[0]);
     let brTags = document.createElement("br");
     display.appendChild(brTags);
     howMany.innerText = times;
   } else if (inputValue < theNumber) {
     times--;
-    smallNums.push(inputValue);
+    smallNums.push(+inputValue);
     sorting(smallNums);
-    display.innerText += `${order}) You Entered ${inputValue} => Enter a number between ${inputValue} and 100`;
+    display.innerText += `${order}) You Entered ${inputValue} => Enter a number between ${+smallNums[
+      smallNums.length - 1
+    ]} and ${+bigNums[0]}`;
+
+    console.log(smallNums, bigNums);
+    console.log(smallNums[smallNums.length - 1], bigNums[0]);
     let brTags = document.createElement("br");
     display.appendChild(brTags);
     howMany.innerText = times;
@@ -39,15 +48,8 @@ button.addEventListener("click", () => {
     display.appendChild(brTags);
     howMany.innerText = times;
   }
-
-
-
-
-
-
-
-
-
-  
+  inputbox.value = "";
   order++;
 });
+
+// return the value when fail
