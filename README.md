@@ -76,12 +76,8 @@ Build a Find the Number Game (Between 0 to 100)
 >Part-3 JS Structure
 
 	- Create code for find the number between 0 to 100
-	- 
 	
 - Step 4: Push your application into your own public repo on Github
 
 - Step 5: Deploy your application on Github template to showcase your app within your team.
-
-
-<center> ⌛ Happy Coding  ✍ </center>
 
