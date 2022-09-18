@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const ejsMate = require("ejs-mate");
 const Campground = require("./models/campground");
 const methodOverride = require("method-override");
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
@@ -15,6 +16,7 @@ db.once("open", () => {
 });
 
 const app = express();
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -55,9 +57,9 @@ app.put("/campgrounds/:id", async (req, res) => {
 app.delete("/campgrounds/:id", async (req, res) => {
   const { id } = req.params;
   await Campground.findByIdAndDelete(id);
-  res.redirect("/campgrounds")
+  res.redirect("/campgrounds");
 });
 
-app.listen(3004, () => {
+app.listen(3002, () => {
   console.log("Serving from port");
 });
