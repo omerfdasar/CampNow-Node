@@ -80,6 +80,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen((port = 3002), () => {
+app.listen((port = 3000), () => {
   console.log(`Serving on port ${port}`);
 });
