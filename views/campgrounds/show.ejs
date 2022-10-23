@@ -1,34 +1,33 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/stars.css">
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        console.log(mapToken)
+    </script>
     <div class="row">
         <div class="col-6">
             <div id="CampgroundCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-
                     <% campground.images.forEach((img,i)=> {%>
-
                         <div class="carousel-item <%= i=== 0 ?'active':"" %> ">
                             <img src="<%= img.url%>" class="d-block w-100" alt="...">
                         </div>
-
-
                         <% }) %>
-
                 </div>
 
-                <% if (campground.images.length > 1 ) { %>
-                 
-                <button class="carousel-control-prev" type="button" data-bs-target="#CampgroundCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#CampgroundCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <% } %>
+                <% if (campground.images.length> 1 ) { %>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#CampgroundCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#CampgroundCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <% } %>
 
             </div>
 
@@ -67,6 +66,9 @@
         </div>
 
         <div class="col-6">
+
+            <div id='map' style='width: 100%; height: 300px;'></div>
+
             <% if (currentUser) { %>
                 <h2>Leave a review</h2>
                 <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate
@@ -125,9 +127,17 @@
                                         <button class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                     <% } %>
-
+                                        <%- %>
                             </div>
                         </div>
                         <% } %>
         </div>
     </div>
+
+
+    <script src="/javascripts/showPageMap.js">
+
+       
+
+
+    </script>
