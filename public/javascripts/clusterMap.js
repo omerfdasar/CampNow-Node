@@ -1,12 +1,15 @@
 mapboxgl.accessToken = mapToken;
 campgrounds = { features: JSON.parse(campgrounds) };
 const map = new mapboxgl.Map({
-  container: "map",
+  container: "cluster-map",
   // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-  style: "mapbox://styles/mapbox/dark-v10",
+  style: "mapbox://styles/mapbox/light-v10",
   center: [-103.5917, 40.6699],
   zoom: 3,
 });
+
+map.addControl(new mapboxgl.NavigationControl());
+
 
 map.on("load", () => {
   // Add a new source from our GeoJSON data and
@@ -95,8 +98,8 @@ map.on("load", () => {
   // description HTML from its properties.
   map.on("click", "unclustered-point", (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
-    const mag = e.features[0].properties.mag;
-    const tsunami = e.features[0].properties.tsunami === 1 ? "yes" : "no";
+    console.log(e.features[0]);
+    const popText = `<a href="/campgrounds/${e.features[0].properties.id}">${e.features[0].properties.title}</a>`;
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -105,10 +108,7 @@ map.on("load", () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML(`magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`)
-      .addTo(map);
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(popText).addTo(map);
   });
 
   map.on("mouseenter", "clusters", () => {

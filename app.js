@@ -84,6 +84,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen((port = 3007), () => {
+app.listen((port = 3003), () => {
   console.log(`Serving on port ${port}`);
 });
