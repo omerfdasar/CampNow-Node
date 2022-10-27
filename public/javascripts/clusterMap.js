@@ -98,7 +98,6 @@ map.on("load", () => {
   // description HTML from its properties.
   map.on("click", "unclustered-point", (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
-    console.log(e.features[0]);
     const popText = `<a href="/campgrounds/${e.features[0].properties.id}">${e.features[0].properties.title}</a>`;
 
     // Ensure that if the map is zoomed out such that
