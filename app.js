@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config()
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
 
 const express = require("express");
@@ -14,7 +14,7 @@ const User = require("./models/user");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewsRoutes = require("./routes/reviews");
 const userRoutes = require("./routes/users");
-
+const mongoSanitize = require("express-mongo-sanitize");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
@@ -39,17 +39,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 const sessionConfig = {
+  name: "session",
   secret: "secret!",
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(
+  mongoSanitize({
+    replaceWith: "_",
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
