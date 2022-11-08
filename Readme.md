@@ -1,6 +1,6 @@
 # CampNow Camp Sites
 
-## Project Deployed on : https://campnow-2022.herokuapp.com/
+## Project Deployed on : https://camp-now.onrender.com/campgrounds
 
 ## Description
 - It is a Camp Sites Website. You can submit your experience on Campgrounds.
